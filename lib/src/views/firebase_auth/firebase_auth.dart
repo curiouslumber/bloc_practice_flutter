@@ -18,9 +18,9 @@ class FirebaseAuthView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(),
-              const Text('Name : '),
+              const Text(StringConstant.nameText),
               Gap.h20,
-              const Text('Email'),
+              const Text(StringConstant.emailText),
               Gap.h20,
               ElevatedButton.icon(
                   onPressed: () {},

@@ -14,6 +14,10 @@ class StringConstant {
   static const String counterButtonTitle = 'Counter BLoC';
   static const String firebaseAuthTitle = 'Firebase Auth BLoC';
 
+  // Firebase Auth Page
+  static const String nameText = 'Name : ';
+  static const String emailText = 'Email : ';
+
   // Assets
 
   // Login
