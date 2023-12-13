@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timer_bloc_project/src/utils/app_size.dart';
 import 'package:timer_bloc_project/src/utils/strings.dart';
 
 class FirebaseAuthView extends StatelessWidget {
@@ -18,11 +19,13 @@ class FirebaseAuthView extends StatelessWidget {
             children: [
               Container(),
               const Text('Name : '),
+              Gap.h20,
               const Text('Email'),
+              Gap.h20,
               ElevatedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.login),
-                  label: const Text('Login')),
+                  label: const Text('Login via Google')),
             ],
           ),
         ));
