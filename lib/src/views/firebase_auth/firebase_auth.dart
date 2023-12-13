@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:timer_bloc_project/src/utils/app_size.dart';
 import 'package:timer_bloc_project/src/utils/strings.dart';
@@ -7,6 +8,14 @@ class FirebaseAuthView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        print('User is currently signed out!');
+      } else {
+        print('User is signed in!');
+      }
+    });
+
     return Scaffold(
         appBar: AppBar(
           title: const Text(StringConstant.firebaseAuthTitle),
