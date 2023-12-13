@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:timer_bloc_project/src/utils/strings.dart';
 import 'package:timer_bloc_project/src/views/counter/counter.dart';
+import 'package:timer_bloc_project/src/views/firebase_auth/firebase_auth.dart';
 import 'package:timer_bloc_project/src/views/home/homepage.dart';
 
 class Router {
@@ -10,6 +11,8 @@ class Router {
         return MaterialPageRoute(builder: (_) => const HomePage());
       case StringConstant.routeCounter:
         return MaterialPageRoute(builder: (_) => const Counter());
+      case StringConstant.routeFirebaseAuth:
+        return MaterialPageRoute(builder: (_) => const FirebaseAuthView());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

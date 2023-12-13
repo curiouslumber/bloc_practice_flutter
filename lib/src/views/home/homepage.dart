@@ -20,13 +20,14 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, StringConstant.routeCounter);
                 },
-                child: const Text('Counter BLoC')),
+                child: const Text(StringConstant.counterButtonTitle)),
             const SizedBox(height: 20),
             ElevatedButton(
                 onPressed: () {
-                  // Navigator.pushNamed(context, StringConstant.routeCounter);
+                  Navigator.pushNamed(
+                      context, StringConstant.routeFirebaseAuth);
                 },
-                child: const Text('Firebase Chat BLoC'))
+                child: const Text(StringConstant.firebaseAuthTitle))
           ],
         ),
       ),
