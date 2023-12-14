@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:timer_bloc_project/src/features/firebase_auth_google/bloc/firebase_auth_google_bloc.dart';
 import 'package:timer_bloc_project/src/utils/app_size.dart';
 import 'package:timer_bloc_project/src/utils/strings.dart';
 
@@ -28,15 +30,42 @@ class FirebaseAuthView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(),
-              const Text(StringConstant.nameText),
-              Gap.h20,
-              const Text(StringConstant.emailText),
-              Gap.h20,
-              ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: const Icon(Icons.login),
-                  label: const Text('Login via Google')),
+              BlocConsumer<FirebaseAuthGoogleBloc, FirebaseAuthGoogleState>(
+                listener: (context, state) {
+                  if (state is FirebaseAuthGoogleLoginState) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text("Logged In"),
+                    ));
+                  } else if (state is FirebaseAuthGoogleLogoutState) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text("Logged Out"),
+                    ));
+                  }
+                },
+                builder: (context, state) {
+                  return Column(
+                    children: [
+                      Text(StringConstant.nameText + state.name),
+                      Gap.h20,
+                      Text(StringConstant.emailText + state.email),
+                      Gap.h20,
+                      state is FirebaseAuthGoogleLoginState
+                          ? ElevatedButton.icon(
+                              onPressed: () => context
+                                  .read<FirebaseAuthGoogleBloc>()
+                                  .add(FirebaseAuthGoogleLogoutEvent()),
+                              icon: const Icon(Icons.logout),
+                              label: const Text('Logout'))
+                          : ElevatedButton.icon(
+                              onPressed: () => context
+                                  .read<FirebaseAuthGoogleBloc>()
+                                  .add(FirebaseAuthGoogleLoginEvent()),
+                              icon: const Icon(Icons.logout),
+                              label: const Text('Login')),
+                    ],
+                  );
+                },
+              ),
             ],
           ),
         ));

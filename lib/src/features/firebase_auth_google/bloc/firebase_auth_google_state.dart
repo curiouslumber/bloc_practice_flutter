@@ -1,19 +1,24 @@
 part of 'firebase_auth_google_bloc.dart';
 
 class FirebaseAuthGoogleState {
-  final bool isLoading;
+  final String name;
+  final String email;
 
-  const FirebaseAuthGoogleState({required this.isLoading});
+  const FirebaseAuthGoogleState({required this.name, required this.email});
 }
 
 class FirebaseAuthGoogleInitialState extends FirebaseAuthGoogleState {
-  const FirebaseAuthGoogleInitialState() : super(isLoading: false);
+  const FirebaseAuthGoogleInitialState() : super(name: "", email: "");
 }
 
 class FirebaseAuthGoogleLoginState extends FirebaseAuthGoogleState {
-  const FirebaseAuthGoogleLoginState() : super(isLoading: false);
+  final String username;
+  final String useremail;
+  const FirebaseAuthGoogleLoginState(
+      {required this.username, required this.useremail})
+      : super(name: username, email: useremail);
 }
 
 class FirebaseAuthGoogleLogoutState extends FirebaseAuthGoogleState {
-  const FirebaseAuthGoogleLogoutState() : super(isLoading: false);
+  const FirebaseAuthGoogleLogoutState() : super(name: "", email: "");
 }
