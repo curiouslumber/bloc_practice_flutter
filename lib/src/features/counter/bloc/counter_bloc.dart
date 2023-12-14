@@ -20,6 +20,6 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
   void onChange(Change<CounterState> change) {
     super.onChange(change);
     // ignore: avoid_print
-    print(change);
+    print('The current count is ${change.currentState}');
   }
 }
