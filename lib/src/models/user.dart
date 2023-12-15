@@ -1,20 +1,10 @@
 class AccountUser {
-  String name = "user";
-  String email = "email";
+  static String name = "";
+  static String email = "";
 
-  void setAccountName(String name) {
-    this.name = name;
-  }
-
-  void setAccountEmail(String email) {
-    this.email = email;
-  }
-
-  String getAccountName() {
-    return name;
-  }
-
-  String getAccountEmail() {
-    return email;
+  // Method to update name and email
+  static void updateInfo(String newName, String newEmail) {
+    name = newName;
+    email = newEmail;
   }
 }

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:timer_bloc_project/src/features/firebase_auth_google/bloc/firebase_auth_google_bloc.dart';
+import 'package:timer_bloc_project/src/models/user.dart';
 import 'package:timer_bloc_project/src/utils/app_size.dart';
 import 'package:timer_bloc_project/src/utils/strings.dart';
 
@@ -19,7 +20,8 @@ class _FirebaseAuthViewState extends State<FirebaseAuthView> {
   Widget build(BuildContext context) {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user != null) {
-        print(user.uid);
+        FirebaseAuthGoogleLoginState(
+            username: AccountUser.name, useremail: AccountUser.email);
       }
     });
 

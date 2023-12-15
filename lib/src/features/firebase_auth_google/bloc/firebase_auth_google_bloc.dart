@@ -13,17 +13,18 @@ class FirebaseAuthGoogleBloc
     // On User Login
     on<FirebaseAuthGoogleLoginEvent>((event, emit) async {
       print("Logging in");
-      await Authentication.signInWithGoogle(context: event.context);
+      var user = await Authentication.signInWithGoogle(context: event.context);
+
+      AccountUser.updateInfo(user!.displayName!, user.email!);
 
       emit(FirebaseAuthGoogleLoginState(
-          username: AccountUser().getAccountName(),
-          useremail: AccountUser().getAccountEmail()));
+          username: AccountUser.name, useremail: AccountUser.email));
     });
 
     // On User Logout
     on<FirebaseAuthGoogleLogoutEvent>((event, emit) async {
       print("Logging out");
-      await Authentication.signOut(context: event.context);
+      // await Authentication.signOut(context: event.context);
       emit(const FirebaseAuthGoogleLogoutState());
     });
   }
