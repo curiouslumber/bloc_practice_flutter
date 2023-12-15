@@ -15,13 +15,19 @@ class FirebaseAuthView extends StatefulWidget {
 
 class _FirebaseAuthViewState extends State<FirebaseAuthView> {
   bool _isSigningIn = false;
+  bool _isSignedIn = false;
 
   @override
   Widget build(BuildContext context) {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user != null) {
         FirebaseAuthGoogleLoginState(
-            username: AccountUser.name, useremail: AccountUser.email);
+            userAvatarUrl: AccountUser.avatarUrl,
+            username: AccountUser.name,
+            useremail: AccountUser.email);
+        setState(() {
+          _isSignedIn = true;
+        });
       }
     });
 
@@ -56,6 +62,17 @@ class _FirebaseAuthViewState extends State<FirebaseAuthView> {
                       builder: (context, state) {
                         return Column(
                           children: [
+                            CircleAvatar(
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.inversePrimary,
+                              radius: 60,
+                              backgroundImage: _isSignedIn
+                                  ? (state.avatarUrl == ""
+                                      ? null
+                                      : NetworkImage(state.avatarUrl))
+                                  : null,
+                            ),
+                            Gap.h20,
                             Text(StringConstant.nameText + state.name),
                             Gap.h20,
                             Text(StringConstant.emailText + state.email),
@@ -90,6 +107,7 @@ class _FirebaseAuthViewState extends State<FirebaseAuthView> {
                                               context));
 
                                       setState(() {
+                                        _isSignedIn = true;
                                         _isSigningIn = false;
                                       });
                                     },

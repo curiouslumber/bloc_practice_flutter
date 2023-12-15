@@ -15,10 +15,13 @@ class FirebaseAuthGoogleBloc
       print("Logging in");
       var user = await Authentication.signInWithGoogle(context: event.context);
 
-      AccountUser.updateInfo(user!.displayName!, user.email!);
+      AccountUser.updateInfo(
+          user!.uid, user.photoURL!, user.displayName!, user.email!);
 
       emit(FirebaseAuthGoogleLoginState(
-          username: AccountUser.name, useremail: AccountUser.email));
+          userAvatarUrl: AccountUser.avatarUrl,
+          username: AccountUser.name,
+          useremail: AccountUser.email));
     });
 
     // On User Logout
