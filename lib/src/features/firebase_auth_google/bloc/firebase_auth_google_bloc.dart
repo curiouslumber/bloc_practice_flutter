@@ -27,7 +27,7 @@ class FirebaseAuthGoogleBloc
     // On User Logout
     on<FirebaseAuthGoogleLogoutEvent>((event, emit) async {
       print("Logging out");
-      // await Authentication.signOut(context: event.context);
+      await Authentication.signOut(context: event.context);
       emit(const FirebaseAuthGoogleLogoutState());
     });
   }
