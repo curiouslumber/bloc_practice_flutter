@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timer_bloc_project/src/utils/app_size.dart';
 import 'package:timer_bloc_project/src/utils/strings.dart';
 
 class HomePage extends StatelessWidget {
@@ -21,13 +22,20 @@ class HomePage extends StatelessWidget {
                   Navigator.pushNamed(context, StringConstant.routeCounter);
                 },
                 child: const Text(StringConstant.counterButtonTitle)),
-            const SizedBox(height: 20),
+            Gap.h20,
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, StringConstant.routeFirebaseAuth);
+              },
+              child: const Text(StringConstant.firebaseAuthTitle),
+            ),
+            Gap.h20,
             ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(
-                      context, StringConstant.routeFirebaseAuth);
+                      context, StringConstant.routeFirebaseNotif);
                 },
-                child: const Text(StringConstant.firebaseAuthTitle))
+                child: const Text(StringConstant.firebaseNotifTitle))
           ],
         ),
       ),

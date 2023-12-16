@@ -8,8 +8,10 @@ environment:
 
 dependencies:
   cupertino_icons: null
+  firebase_analytics: ^10.7.4
   firebase_auth: null
   firebase_core: null
+  firebase_messaging: ^14.7.9
   flutter:
     sdk: flutter
   flutter_bloc: null

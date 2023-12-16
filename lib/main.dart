@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:timer_bloc_project/firebase_options.dart';
 import 'package:timer_bloc_project/src/features/counter/bloc/counter_bloc.dart';
 import 'package:timer_bloc_project/src/features/firebase_auth_google/bloc/firebase_auth_google_bloc.dart';
+import 'package:timer_bloc_project/src/resources/firebase_notifications/firebase_messaging.dart';
 import 'package:timer_bloc_project/src/utils/colors.dart';
 import 'package:timer_bloc_project/src/utils/strings.dart';
 import 'package:timer_bloc_project/src/routing/router.dart' as app_router;
@@ -12,6 +14,8 @@ import 'package:timer_bloc_project/src/routing/router.dart' as app_router;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // CustomFirebaseMessaging.configureFirebaseMessaging();
+  FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(true);
   runApp(const MyApp());
 }
 
