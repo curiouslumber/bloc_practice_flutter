@@ -15,7 +15,6 @@ class CustomFirebaseMessaging {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       // ignore: avoid_print
       print('Received message: ${message.notification?.title}');
-      // Handle the received message while the app is in the foreground.
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
