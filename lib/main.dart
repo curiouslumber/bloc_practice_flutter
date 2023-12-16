@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:timer_bloc_project/firebase_options.dart';
 import 'package:timer_bloc_project/src/features/counter/bloc/counter_bloc.dart';
 import 'package:timer_bloc_project/src/features/firebase_auth_google/bloc/firebase_auth_google_bloc.dart';
-import 'package:timer_bloc_project/src/resources/firebase_notifications/firebase_messaging.dart';
 import 'package:timer_bloc_project/src/utils/colors.dart';
 import 'package:timer_bloc_project/src/utils/strings.dart';
 import 'package:timer_bloc_project/src/routing/router.dart' as app_router;
@@ -14,8 +13,8 @@ import 'package:timer_bloc_project/src/routing/router.dart' as app_router;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // CustomFirebaseMessaging.configureFirebaseMessaging();
   FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(true);
+  FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance);
   runApp(const MyApp());
 }
 
@@ -34,6 +33,9 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
+        navigatorObservers: [
+          FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
+        ],
         debugShowCheckedModeBanner: false,
         title: StringConstant.appTitle,
         theme: ThemeData(
