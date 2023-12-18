@@ -9,12 +9,14 @@ class StringConstant {
   static const String routeCounter = '/counter';
   static const String routeFirebaseAuth = '/firebaseAuth';
   static const String routeFirebaseNotif = '/firebaseNotif';
+  static const String routeFirebaseMessaging = '/firebaseMessaging';
 
   // Home
   static const String homeTitle = 'BLoC';
   static const String counterButtonTitle = 'Counter BLoC';
   static const String firebaseAuthTitle = 'Firebase Auth BLoC';
   static const String firebaseNotifTitle = 'Firebase Notifications';
+  static const String firebaseMessagingTitle = 'Firebase Messaging';
 
   // Firebase Auth Page
   static const String nameText = 'Name : ';

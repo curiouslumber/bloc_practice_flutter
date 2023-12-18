@@ -35,7 +35,15 @@ class HomePage extends StatelessWidget {
                   Navigator.pushNamed(
                       context, StringConstant.routeFirebaseNotif);
                 },
-                child: const Text(StringConstant.firebaseNotifTitle))
+                child: const Text(StringConstant.firebaseNotifTitle)),
+            Gap.h20,
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                    context, StringConstant.routeFirebaseMessaging);
+              },
+              child: const Text("Firebase Messaging"),
+            )
           ],
         ),
       ),

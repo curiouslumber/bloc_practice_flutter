@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:timer_bloc_project/src/utils/strings.dart';
 import 'package:timer_bloc_project/src/views/counter/counter.dart';
 import 'package:timer_bloc_project/src/views/firebase_auth/firebase_auth.dart';
+import 'package:timer_bloc_project/src/views/firebase_msg/firebase_messaging.dart';
 import 'package:timer_bloc_project/src/views/firebase_notifications/firebase_notif.dart';
 import 'package:timer_bloc_project/src/views/home/homepage.dart';
 
@@ -16,6 +17,8 @@ class Router {
         return MaterialPageRoute(builder: (_) => const FirebaseAuthView());
       case StringConstant.routeFirebaseNotif:
         return MaterialPageRoute(builder: (_) => const FirebaseNotifView());
+      case StringConstant.routeFirebaseMessaging:
+        return MaterialPageRoute(builder: (_) => const FirebaseMessagingView());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
